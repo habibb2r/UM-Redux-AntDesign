@@ -39,13 +39,12 @@ const MainLayout = () => {
             console.log(collapsed, type);
           }}
         >
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-          <img style={{height: '50px', borderRadius: '10%'}} src={logoImg} alt="" />
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '64px' }}>
           </div>
           <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={items} />
         </Sider>
         <Layout>
-          <Header style={{ padding: 0 }} />
+          <Header style={{ padding: 0, display: 'flex', justifyContent: 'center' }}> <img style={{height: '60px', borderRadius: '10%'}} src={logoImg} alt="" /></Header>
           <Content style={{ margin: '24px 16px 0' }}>
             <div
               style={{
