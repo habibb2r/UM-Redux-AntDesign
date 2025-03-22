@@ -1,26 +1,27 @@
 import { Layout, Menu, MenuProps } from 'antd';
 const { Header, Content, Footer, Sider } = Layout;
 import logoImg from '../../assets/images/logo.png'
+import { NavLink, Outlet } from 'react-router-dom';
 const items: MenuProps['items'] = [
     {
-        key: '1',
-        label: 'Dashboard'
+        key: 'Dashboard',
+        label: <NavLink to="/admin/dashboard">Dashboard</NavLink>
     },
     {
-        key: '2',
-        label: 'Profile',
-    },
-    {
-        key: '3',
+        key: 'User Management',
         label: 'User Management',
         children: [
             {
-                key: '4',
-                label: 'Create Students'
+                key: 'Create Student',
+                label: <NavLink to="/admin/create-student">Create Student</NavLink>
             },
             {
-                key: '5',
-                label: 'Create Fecaulty'
+                key: 'Create Faculty',
+                label: <NavLink to="/admin/create-faculty">Create Faculty</NavLink>
+            },
+            {
+                key: 'Create Admin',
+                label: <NavLink to="/admin/create-admin">Create Admin</NavLink>
             }
         ]
     }
@@ -53,7 +54,7 @@ const MainLayout = () => {
                
               }}
             >
-              content
+             <Outlet/>
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>
