@@ -1,10 +1,18 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import AdminDashboard from "../pages/admin/AdminDashboard";
-import CreateStudent from "../pages/admin/CreateStudent";
-import CreateFaculty from "../pages/admin/CreateFaculty";
-import CreateAdmin from "../pages/admin/CreateAdmin";
+import { adminRoutes } from "./admin.routes";
+import { ReactNode } from "react";
 
+export type TRoute = {
+    path: string,
+    element: ReactNode,
+}
+
+export type TSideBarItem ={
+    key: string,
+    label: ReactNode,
+    children?: TSideBarItem[]
+}
 const router = createBrowserRouter([
     {
         path: "/",
@@ -13,28 +21,17 @@ const router = createBrowserRouter([
     {
         path: '/admin',
         element: <App />,
-        children: [
-            {
-                index: true,
-                element: <AdminDashboard />
-            },
-            {
-                path: 'dashboard',
-                element: <AdminDashboard />
-            },
-            {
-                path: 'create-student',
-                element: <CreateStudent />
-            },
-            {
-                path: 'create-faculty',
-                element: <CreateFaculty />
-            },
-            {
-                path: 'create-admin',
-                element: <CreateAdmin />
-            }
-        ]
+        children: adminRoutes
+    },
+    {
+        path: '/faculty',
+        element: <App />,
+        children: adminRoutes
+    },
+    {
+        path: '/student',
+        element: <App />,
+        children: adminRoutes
     }
 ])
 
