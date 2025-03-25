@@ -5,11 +5,13 @@ import { Outlet } from "react-router-dom";
 import SideBar from "./SideBar";
 import { useAppDispatch } from "../../redux/hooks";
 import { logout } from "../../redux/features/auth/authSlice";
+import { toast } from "sonner";
 
 const MainLayout = () => {
   const dispatch = useAppDispatch()
   const handleLogOut = () =>{
      dispatch(logout())
+     toast.success("Logout successful")
   }
   return (
     <Layout style={{ height: "100vh" }}>
