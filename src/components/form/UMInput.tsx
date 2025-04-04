@@ -2,7 +2,14 @@
 import { Input } from 'antd';
 import { Controller } from 'react-hook-form';
 
-const UMInput = ({type, name, label}) => {
+
+type TInputProps ={
+    type: string,
+    name: string,
+    label?: string
+}
+
+const UMInput = ({type, name, label}: TInputProps) => {
    
     return <>
     {
