@@ -6,6 +6,8 @@ import { setUser, TUser } from "../../redux/features/auth/authSlice";
 import { verifyToken } from "../../utils/verifyToken";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import UMForm from "../../components/form/UMForm";
+import UMInput from "../../components/form/UMInput";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -15,11 +17,14 @@ const Login = () => {
   console.log("data =>", data);
   console.log("error =>", error);
   const onSubmit = async (data : FieldValues) => {
+    console.log("data =>", data);
     const toastId = toast.loading("Logging in...");
     try {
       const userInfo = {
-        id: "0001" ,
-        password: "admin12345" ,
+        // id: "0001" ,
+        // password: "admin12345" ,
+        id: data.id,
+        password: data.password,
       };
       const res = await login(userInfo).unwrap();
       const user = verifyToken(res.data.accessToken) as TUser;
@@ -39,17 +44,15 @@ const Login = () => {
         height: "100vh",
       }}
     >
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <UMForm onSubmit={onSubmit}>
         <div>
-          <label htmlFor="id">ID:</label>
-          <input type="text" id="id" {...register("id")} />
+        <UMInput type={"text"} name={"id"} label={"ID :"} />
         </div>
         <div>
-          <label htmlFor="password">Password:</label>
-          <input type="text" id="password" {...register("password")} />
+          <UMInput type={"text"} name={"password"} label={"Password :"} />
         </div>
         <Button htmlType="submit">Login</Button>
-      </form>
+      </UMForm>
     </div>
   );
 };
