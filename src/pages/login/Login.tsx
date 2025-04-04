@@ -45,13 +45,12 @@ const Login = () => {
       }}
     >
       <UMForm onSubmit={onSubmit}>
-        <div>
-        <UMInput type={"text"} name={"id"} label={"ID :"} />
-        </div>
-        <div>
+        <div style={{ display: "flex", flexDirection: "column", gap: "1rem", justifyContent: "center", alignItems: "center" }}>
+          <UMInput type={"text"} name={"id"} label={"ID :"} />
           <UMInput type={"text"} name={"password"} label={"Password :"} />
+          <Button htmlType="submit">Login</Button>
         </div>
-        <Button htmlType="submit">Login</Button>
+        
       </UMForm>
     </div>
   );
